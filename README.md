@@ -140,4 +140,4 @@ The following test cases are included in the test suite:
 
 4.  Accessibility:
 
-    *   Bug 13 : Total issues 25 issue. For more detials, please check the Accessibility folder
+    *   Bug 13 : Total issues 25 issue. For more detials, please check the Accessibility Results_Core.html and Accessibility Results_best_prac.html
