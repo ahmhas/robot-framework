@@ -103,25 +103,19 @@ The following test cases are included in the test suite:
         *   Severity: Medium. Impacts relevancy.
         *   Repro Steps: Search "Star Trek". Search "Star Trek+". Compare Results.
 
-    *   Bug 3 : Case Sensitivity:
-
-        *   Description: Determine if the search is case-sensitive. A case-sensitive search can be frustrating for users. It should ideally be case-insensitive.
-        *   Severity: Low if case-sensitive, Medium if inconsistent.
-        *   Repro Steps: Search for "Star Wars". Search for "star wars". Compare the results and ensure both show the same results.
-
-    *   Bug 4 : Empty Search Handling:
+    *   Bug 3 : Empty Search Handling:
 
         *   Description: Test what happens when the user clicks search with an empty search field. Does it throw an error? Does it do nothing? Does it return all movies? The expected behavior is returning all movies or displaying an empty display of the movies.
         *   Severity: Low-Medium depending on outcome.
         *   Repro Steps: Click the search button without entering any text in the search field.
 
-    *   Bug 5 : Long Search Query:
+    *   Bug 4 : Long Search Query:
 
         *   Description: Test with an extremely long search query (e.g., a paragraph of text). Does it break the search functionality? Is there a character limit?
         *   Severity: Low-Medium. Could lead to denial-of-service in extreme cases.
         *   Repro Steps: Enter a very long string of text into the search field.
 
-    *   Bug 6 : Injection Vulnerability (Highly Unlikely on a Simple App, but Test):
+    *   Bug 5 : Injection Vulnerability (Highly Unlikely on a Simple App, but Test):
 
         *   Description: Attempt to inject code (e.g., JavaScript or SQL, though SQL injection is less likely on a client-side application like this) into the search field. For example, `<script>alert('XSS')</script>`. This is a security concern.
         *   Severity: High if vulnerable.
@@ -131,53 +125,19 @@ The following test cases are included in the test suite:
 
 2.  UI/Display:
 
-    *   Bug 7 : Movie Title Clickability:
+    *   Bug 6 : Movie Title Clickability:
 
         *   Description: The movie titles are not clickable. This reduces usability.
         *   Severity: Low-Medium. Impacts user experience.
         *   Repro Steps: Attempt to click on a movie title. Observe that it doesn't lead to a detail page.
         *   Recommendation: Make Movie titles clickable.
 
-    *   Bug 8 : Placeholder text issue
+    *   Bug 7 : Placeholder text issue
 
         *   Description: The word "Search" should appear as a placeholder as reported before.
         *   Severity: Low. impacts visual polish
         *   Repro Steps: Go to the home page and observe that the word "Search" appears as text.
 
-    *   Testing Recommendation: Test on different screen sizes (responsive design) to ensure the layout doesn't break.
-
-3.  Data Integrity:
-
-    *   Bug 9 : Missing Movie Data:
-
-        *   Description: Check if some movies are missing data (e.g., title, image). This usually happens when the application cannot retrieve all the relevant data or when some of the data are formatted differently than what is expected.
-        *   Severity: Medium. Impacts user experience and data integrity.
-        *   Repro Steps: Inspect random movie listings to confirm all fields are populated.
-        *   Recommendation: Implement error handling to gracefully handle missing data.
-
-    *   Bug 10 : Incorrect Movie Data:
-
-        *   Description: Verify the accuracy of the movie data. Are the titles spelled correctly? Are the images correct?
-        *   Severity: Medium. Impacts credibility and user experience.
-        *   Repro Steps: Compare the displayed information with a reliable source (e.g., IMDb) for a sample of movies.
-        *   Recommendation: Implement data validation and source data from a reliable API.
-
-4.  Performance:
-
-    *   Bug 11 : Slow Initial Load Time:
-
-        *   Description: Check the initial page load time. If it's slow, it can frustrate users. This can be measured using browser developer tools.
-        *   Severity: Medium if slow.
-        *   Repro Steps: Use the "Network" tab in the browser's developer tools to analyze the page load time.
-        *   Recommendation: Optimize images, use browser caching, and consider code splitting to improve load times.
-
-    *   Bug 12 : Slow Search Results:
-
-        *   Description: Check the time it takes for search results to appear after submitting a query.
-        *   Severity: Medium if slow.
-        *   Repro Steps: Use the "Network" tab to analyze the time it takes to retrieve search results.
-        *   Recommendation: Optimize the search algorithm and data structures.
-
-5.  Accessibility:
+4.  Accessibility:
 
     *   Bug 13 : Total issues 25 issue. For more detials, please check the Accessibility folder
