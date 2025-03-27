@@ -86,29 +86,3 @@ The following test cases are included in the test suite:
 *   **ui:** User interface tests.
 *   **data-validation:** Tests that validate data displayed in the application.
 *   **search:** Tests related to search functionality.
-
-## GitLab CI (Optional)
-
-A `.gitlab-ci.yml` file is provided for running the tests automatically in a GitLab CI/CD pipeline. This file defines the stages (e.g., test) and jobs required to execute the tests.  To use this, you need a GitLab repository and a runner configured to execute Robot Framework tests.
-
-**Example `.gitlab-ci.yml`:**
-
-```yaml
-stages:
-  - test
-
-test:
-  image: python:3.9
-  services:
-    - selenium/standalone-chrome:latest  # Or Firefox
-  before_script:
-    - pip install -r robot/requirements.txt
-    - apt-get update -yq
-    - apt-get install -yq chromium-driver
-  script:
-    - robot robot/tests/top_movies.robot
-  artifacts:
-    paths:
-      - robot/output.xml
-      - robot/log.html
-    expire_in: 1 week
