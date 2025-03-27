@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-03-27T18:20:16.140308" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\EHASSAALB\PycharmProjects\ta-technical-task\tests">
+<suite id="s1-s1" name="Movie Tests" source="C:\Users\EHASSAALB\PycharmProjects\ta-technical-task\tests\movie_tests.robot">
+<kw name="Initialize Browser Session" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:16.501383" level="INFO">Opening browser 'chrome' to base url 'https://top-movies-qhyuvdwmzt.now.sh/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER_TYPE}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-27T18:20:16.501147" elapsed="2.456861"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-27T18:20:18.958667" elapsed="0.067218"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Top Movies</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.026422" elapsed="0.025670"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-27T18:20:19.052835" level="INFO">Browser session initialized successfully</msg>
+<arg>Browser session initialized successfully</arg>
+<arg>level=INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.052476" elapsed="0.000479"/>
+</kw>
+<doc>Sets up the browser session with the specified URL and configurations.</doc>
+<status status="PASS" start="2025-03-27T18:20:16.500483" elapsed="2.552655"/>
+</kw>
+<test id="s1-s1-t1" name="TC-001: Validate Movie List Display on Page Load" line="23">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${MOVIE_TILE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.054684" elapsed="0.018499"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:19.083615" level="INFO">${tile_count} = 20</msg>
+<var>${tile_count}</var>
+<arg>${MOVIE_TILE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.074410" elapsed="0.009282"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${tile_count} &gt; 19</arg>
+<arg>msg=Expected at least 20 movie tiles, found ${tile_count}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.084496" elapsed="0.000748"/>
+</kw>
+<doc>Ensures movie tiles are rendered correctly upon initial page load.</doc>
+<tag>critical</tag>
+<tag>smoke</tag>
+<tag>ui</tag>
+<status status="PASS" start="2025-03-27T18:20:19.053322" elapsed="0.032439"/>
+</test>
+<test id="s1-s1-t2" name="TC-002: Verify Shawshank Redemption Release Date" line="30">
+<kw name="Open Movie Details">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-27T18:20:19.090319" level="INFO">${learn_more_locator} = xpath:(//span[@class='jss95'][text()='Learn More'])[1]</msg>
+<var>${learn_more_locator}</var>
+<arg>xpath:(//span[@class='jss95'][text()='Learn More'])[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.089397" elapsed="0.001037"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${learn_more_locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.090800" elapsed="0.028683"/>
+</kw>
+<kw name="Click Element Safely">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.120576" elapsed="0.030793"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.151803" elapsed="0.044294"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:19.196915" level="INFO">Clicking element 'xpath:(//span[@class='jss95'][text()='Learn More'])[1]'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.196554" elapsed="0.117375"/>
+</kw>
+<arg>${learn_more_locator}</arg>
+<doc>Safely clicks an element after ensuring it is visible and interactable.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.119882" elapsed="0.194173"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=7s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.314193" elapsed="0.030719"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${RELEASE_TEXT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.345139" elapsed="0.021008"/>
+</kw>
+<arg>index=1</arg>
+<doc>Opens the movie details modal for the specified movie index.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.088289" elapsed="0.277968"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:19.386306" level="INFO">${release_date} = 1994-09-23</msg>
+<var>${release_date}</var>
+<arg>${RELEASE_DATE_LBL}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.366496" elapsed="0.019856"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-27T18:20:19.386835" level="INFO">Release Date Retrieved: 1994-09-23</msg>
+<arg>Release Date Retrieved: ${release_date}</arg>
+<arg>level=INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.386642" elapsed="0.000231"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${release_date}</arg>
+<arg>1994-09-23</arg>
+<arg>msg=Incorrect release date for Shawshank Redemption</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.387028" elapsed="0.000171"/>
+</kw>
+<kw name="Close Movie Details">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=7s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.387748" elapsed="0.012497"/>
+</kw>
+<kw name="Click Element Safely">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.400616" elapsed="0.015396"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.416184" elapsed="0.031589"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:19.448225" level="INFO">Clicking element 'xpath://*[contains(text(), 'Close')]'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.447965" elapsed="0.063413"/>
+</kw>
+<arg>${CLOSE_MODAL_BTN}</arg>
+<doc>Safely clicks an element after ensuring it is visible and interactable.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.400395" elapsed="0.111113"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.511649" elapsed="2.258117"/>
+</kw>
+<doc>Closes the movie details modal.</doc>
+<status status="PASS" start="2025-03-27T18:20:19.387417" elapsed="2.382456"/>
+</kw>
+<doc>Validates the release date for "The Shawshank Redemption" in movie details.</doc>
+<tag>data-validation</tag>
+<tag>regression</tag>
+<status status="PASS" start="2025-03-27T18:20:19.087175" elapsed="2.682912"/>
+</test>
+<test id="s1-s1-t3" name="TC-003: Validate Search Functionality with Star Trek" line="39">
+<kw name="Perform Search">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SEARCH_FIELD}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.772227" elapsed="0.017232"/>
+</kw>
+<kw name="Click Element Safely">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.790194" elapsed="0.013884"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.804257" elapsed="0.020584"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:21.825311" level="INFO">Clicking element 'xpath://*/input[@type='search']'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.825053" elapsed="0.059005"/>
+</kw>
+<arg>${SEARCH_FIELD}</arg>
+<doc>Safely clicks an element after ensuring it is visible and interactable.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.789750" elapsed="0.094460"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:21.884655" level="INFO">Typing text 'Star Trek' into text field 'xpath://*/input[@type='search']'.</msg>
+<arg>${SEARCH_FIELD}</arg>
+<arg>${query}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.884373" elapsed="0.093517"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:21.978423" level="INFO">Sending key(s) ('ENTER',) to xpath://*/input[@type='search'] element.</msg>
+<msg time="2025-03-27T18:20:22.266969" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2025-03-27T18:20:22.267096" level="INFO">Releasing special key ENTER.</msg>
+<arg>${SEARCH_FIELD}</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.978090" elapsed="0.298608"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-27T18:20:24.277318" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-27T18:20:22.276898" elapsed="2.000580"/>
+</kw>
+<arg>query=Star Trek</arg>
+<doc>Executes a search query in the search field.</doc>
+<status status="PASS" start="2025-03-27T18:20:21.771827" elapsed="2.505796"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Star Trek: Section 31</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-03-27T18:20:24.277983" elapsed="0.010631"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:24.297466" level="INFO">Current page contains text 'Star Trek: Section 31'.</msg>
+<arg>Star Trek: Section 31</arg>
+<arg>msg=Expected Star Trek: Section 31 not found in search results</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-03-27T18:20:24.288978" elapsed="0.008555"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.409875" level="INFO">Current page does not contain text 'The Shawshank Redemption'.</msg>
+<arg>The Shawshank Redemption</arg>
+<arg>msg=Unexpected movie found in search results</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2025-03-27T18:20:24.297714" elapsed="4.112326"/>
+</kw>
+<doc>Verifies that searching for "Star Trek" returns relevant results.</doc>
+<tag>regression</tag>
+<tag>search</tag>
+<tag>ui</tag>
+<status status="PASS" start="2025-03-27T18:20:21.771052" elapsed="6.639536"/>
+</test>
+<test id="s1-s1-t4" name="TC-004: Verify Movie Details for Star Trek Into Darkness" line="47">
+<kw name="Open Movie Details">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-27T18:20:28.415109" level="INFO">${learn_more_locator} = xpath:(//span[@class='jss95'][text()='Learn More'])[3]</msg>
+<var>${learn_more_locator}</var>
+<arg>xpath:(//span[@class='jss95'][text()='Learn More'])[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.414705" elapsed="0.000496"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${learn_more_locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.415472" elapsed="0.044298"/>
+</kw>
+<kw name="Click Element Safely">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.460959" elapsed="0.029257"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.490902" elapsed="0.041247"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.533392" level="INFO">Clicking element 'xpath:(//span[@class='jss95'][text()='Learn More'])[3]'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.532881" elapsed="0.132780"/>
+</kw>
+<arg>${learn_more_locator}</arg>
+<doc>Safely clicks an element after ensuring it is visible and interactable.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.460226" elapsed="0.205667"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=7s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.666225" elapsed="0.028678"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${RELEASE_TEXT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.695447" elapsed="0.027436"/>
+</kw>
+<arg>index=3</arg>
+<doc>Opens the movie details modal for the specified movie index.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.413875" elapsed="0.309600"/>
+</kw>
+<kw name="Validate Movie Metadata">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.754458" level="INFO">${actual_release} = 2013-05-05</msg>
+<var>${actual_release}</var>
+<arg>${RELEASE_DATE_LBL}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.726110" elapsed="0.028487"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.783914" level="INFO">${actual_popularity} = 5.2502</msg>
+<var>${actual_popularity}</var>
+<arg>${POPULARITY_LBL}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.755002" elapsed="0.029000"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.816169" level="INFO">${actual_vote_avg} = 7.322</msg>
+<var>${actual_vote_avg}</var>
+<arg>${VOTE_AVG_LBL}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.784641" elapsed="0.031643"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.853333" level="INFO">${actual_vote_count} = 9194</msg>
+<var>${actual_vote_count}</var>
+<arg>${VOTE_COUNT_LBL}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.816685" elapsed="0.036718"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-27T18:20:28.854409" level="INFO">Metadata - Release: 2013-05-05, Popularity: 5.2502, Vote Avg: 7.322, Vote Count: 9194</msg>
+<arg>Metadata - Release: ${actual_release}, Popularity: ${actual_popularity}, Vote Avg: ${actual_vote_avg}, Vote Count: ${actual_vote_count}</arg>
+<arg>level=INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.853628" elapsed="0.000964"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual_release}</arg>
+<arg>${release_date}</arg>
+<arg>msg=Release date mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.854989" elapsed="0.000614"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual_popularity}</arg>
+<arg>${popularity}</arg>
+<arg>msg=Popularity mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.856109" elapsed="0.000918"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual_vote_avg}</arg>
+<arg>${vote_average}</arg>
+<arg>msg=Vote average mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.857470" elapsed="0.000885"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual_vote_count}</arg>
+<arg>${vote_count}</arg>
+<arg>msg=Vote count mismatch</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.858687" elapsed="0.000862"/>
+</kw>
+<arg>release_date=2013-05-05</arg>
+<arg>popularity=5.2502</arg>
+<arg>vote_average=7.322</arg>
+<arg>vote_count=9194</arg>
+<doc>Validates multiple metadata fields for a movie.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.724825" elapsed="0.135091"/>
+</kw>
+<kw name="Close Movie Details">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=7s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.861667" elapsed="0.029543"/>
+</kw>
+<kw name="Click Element Safely">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.892902" elapsed="0.031485"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.924856" elapsed="0.043011"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-27T18:20:28.968733" level="INFO">Clicking element 'xpath://*[contains(text(), 'Close')]'.</msg>
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.968317" elapsed="0.098983"/>
+</kw>
+<arg>${CLOSE_MODAL_BTN}</arg>
+<doc>Safely clicks an element after ensuring it is visible and interactable.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.891755" elapsed="0.175801"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${CLOSE_MODAL_BTN}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-03-27T18:20:29.067864" elapsed="2.239212"/>
+</kw>
+<doc>Closes the movie details modal.</doc>
+<status status="PASS" start="2025-03-27T18:20:28.861130" elapsed="2.446105"/>
+</kw>
+<doc>Validates detailed metadata for "Star Trek Into Darkness".</doc>
+<tag>data-validation</tag>
+<tag>regression</tag>
+<tag>ui</tag>
+<status status="PASS" start="2025-03-27T18:20:28.412302" elapsed="2.895432"/>
+</test>
+<kw name="Terminate Browser Session" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-03-27T18:20:31.308836" elapsed="2.515930"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-27T18:20:33.825335" level="INFO">Browser session terminated</msg>
+<arg>Browser session terminated</arg>
+<arg>level=INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-27T18:20:33.825100" elapsed="0.000303"/>
+</kw>
+<doc>Gracefully terminates all open browser instances.</doc>
+<status status="PASS" start="2025-03-27T18:20:31.308639" elapsed="2.516869"/>
+</kw>
+<doc>Test suite for validating core functionalities of the Top Movies web application.
+This suite ensures movie listing, search, and detailed metadata display operate as expected.</doc>
+<status status="PASS" start="2025-03-27T18:20:16.168530" elapsed="17.657029"/>
+</suite>
+<status status="PASS" start="2025-03-27T18:20:16.143105" elapsed="17.684199"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">critical</stat>
+<stat pass="2" fail="0" skip="0">data-validation</stat>
+<stat pass="3" fail="0" skip="0">regression</stat>
+<stat pass="1" fail="0" skip="0">search</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="3" fail="0" skip="0">ui</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="4" fail="0" skip="0">Tests</stat>
+<stat name="Movie Tests" id="s1-s1" pass="4" fail="0" skip="0">Tests.Movie Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
